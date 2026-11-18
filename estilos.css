@@ -1,0 +1,290 @@
+/* Portafolio Favio Vergara — tema oscuro sobrio, colores suaves y poco saturados */
+
+:root,
+[data-bs-theme="dark"] {
+    --fondo: #1b1e23;
+    --fondo-alt: #16191d;
+    --superficie: #23272d;
+    --superficie-2: #2a2f36;
+    --borde: #353b44;
+    --texto: #d5d9df;
+    --texto-suave: #9ba3ae;
+
+    /* Acento: verde salvia apagado (combina con el verde y azul del logo FV) */
+    --acento: #8fb0aa;
+    --acento-hover: #a9c6c1;
+    --acento-tinte: rgba(143, 176, 170, 0.14);
+    --sobre-acento: #17211f;
+
+    --radio: 10px;
+
+    /* Variables de Bootstrap para que los componentes hereden la paleta */
+    --bs-body-bg: var(--fondo);
+    --bs-body-color: var(--texto);
+    --bs-border-color: var(--borde);
+    --bs-link-color-rgb: 143, 176, 170;
+    --bs-link-hover-color-rgb: 169, 198, 193;
+    --bs-secondary-color: var(--texto-suave);
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.65;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #e6e9ed;
+    letter-spacing: 0.01em;
+}
+
+/* Utilidades de color */
+.texto-suave { color: var(--texto-suave) !important; }
+.texto-acento { color: var(--acento) !important; }
+
+/* ---------- Navegación ---------- */
+.barra-nav {
+    background-color: var(--superficie);
+    border-bottom: 1px solid var(--borde);
+}
+.logo-nav {
+    height: 44px;
+    width: auto;
+    border-radius: 8px;
+}
+.barra-nav .nav-link {
+    position: relative;
+    color: var(--texto-suave);
+    transition: color 0.2s ease;
+}
+.barra-nav .nav-link:hover { color: var(--texto); }
+.barra-nav .nav-link.active { color: var(--texto); }
+.barra-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: var(--bs-navbar-nav-link-padding-x, 0.5rem);
+    right: var(--bs-navbar-nav-link-padding-x, 0.5rem);
+    bottom: 2px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--acento);
+}
+
+/* ---------- Superficies ---------- */
+.card,
+.accordion-item,
+.mapa iframe {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+}
+
+.foto-perfil {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--borde);
+    background-color: var(--superficie);
+}
+
+.mapa iframe {
+    display: block;
+    /* Apaga un poco los colores del mapa */
+    filter: grayscale(0.55) brightness(0.92);
+}
+
+/* ---------- Botones ---------- */
+.btn-fv {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.35rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.btn-fv i { transition: transform 0.2s ease; }
+.btn-fv:hover i { transform: translateX(3px); }
+
+.btn-fv--solido {
+    background-color: var(--acento);
+    color: var(--sobre-acento);
+}
+.btn-fv--solido:hover {
+    background-color: var(--acento-hover);
+    color: var(--sobre-acento);
+}
+
+.btn-fv--linea {
+    background-color: transparent;
+    border-color: var(--borde);
+    color: var(--texto);
+}
+.btn-fv--linea:hover {
+    border-color: var(--acento);
+    background-color: var(--acento-tinte);
+    color: var(--acento-hover);
+}
+
+.btn-fv:focus-visible,
+.icono-red:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+/* Iconos de redes como botones cuadrados con borde */
+.icono-red {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    color: var(--texto-suave);
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.icono-red:hover {
+    color: var(--acento-hover);
+    border-color: var(--acento);
+    background-color: var(--acento-tinte);
+}
+.icono-red--sm {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+}
+
+/* ---------- Formularios ---------- */
+.form-control {
+    background-color: var(--superficie-2);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    color: var(--texto);
+}
+.form-control:focus {
+    background-color: var(--superficie-2);
+    color: var(--texto);
+    border-color: var(--acento);
+    box-shadow: 0 0 0 3px var(--acento-tinte);
+}
+
+/* ---------- Acordeón ---------- */
+.accordion {
+    --bs-accordion-bg: var(--superficie);
+    --bs-accordion-color: var(--texto);
+    --bs-accordion-border-color: var(--borde);
+    --bs-accordion-btn-color: var(--texto);
+    --bs-accordion-btn-bg: var(--superficie);
+    --bs-accordion-active-color: var(--acento-hover);
+    --bs-accordion-active-bg: var(--superficie);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 3px var(--acento-tinte);
+}
+.accordion-item {
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+/* Flecha del acordeón: gris suave (cerrado) y salvia (abierto) en vez del azul de Bootstrap */
+[data-bs-theme="dark"] .accordion-button::after {
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%239ba3ae' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%238fb0aa' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
+}
+
+/* ---------- Franja de redes y pie ---------- */
+.franja-redes,
+.pie {
+    background-color: var(--fondo-alt);
+}
+.franja-redes { border-top: 1px solid var(--borde); }
+.pie {
+    border-top: 1px solid var(--borde);
+    color: var(--texto-suave);
+}
+
+/* ---------- Galería de herramientas ---------- */
+.galeria-logos {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+.galeria-logos .img-galeria {
+    width: calc(25% - 12px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    padding: 12px;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    cursor: pointer;
+    /* Logos con colores más tenues; recuperan color al pasar el mouse */
+    filter: saturate(0.75) brightness(0.93);
+    transition: filter 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.galeria-logos .img-galeria:hover {
+    filter: none;
+    border-color: var(--acento);
+    transform: scale(1.03);
+}
+
+/* ---------- Visor de imágenes (lightbox) ---------- */
+.visor {
+    position: fixed;
+    inset: 0;
+    z-index: 1000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(10, 12, 14, 0.82);
+    backdrop-filter: blur(4px);
+}
+.visor-img {
+    width: 450px;
+    max-width: 90%;
+    border-radius: var(--radio);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+.visor-cerrar {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 50%;
+    background: var(--superficie);
+    color: var(--texto);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.visor-cerrar:hover {
+    color: var(--acento-hover);
+    border-color: var(--acento);
+}
+
+/* ---------- Responsive ---------- */
+@media only screen and (max-width: 980px) {
+    .galeria-logos { width: 92%; }
+    .galeria-logos .img-galeria { width: calc(33.33% - 11px); }
+}
+
+@media only screen and (max-width: 480px) {
+    .galeria-logos { width: 96%; }
+    .foto-perfil { width: 170px; height: 170px; }
+    .galeria-logos .img-galeria { width: calc(50% - 8px); }
+}
